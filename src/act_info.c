@@ -1940,8 +1940,6 @@ void do_who( CHAR_DATA *ch, char *argument )
      */
     iLevelLower    = 0;
     iLevelUpper    = MAX_LEVEL;
-    for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-        rgfClass[iClass] = FALSE;
     for ( iRace = 0; iRace < MAX_PC_RACE; iRace++ )
         rgfRace[iRace] = FALSE;
     for (iClan = 0; iClan < MAX_CLAN; iClan++)
