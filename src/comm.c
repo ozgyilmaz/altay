@@ -1887,7 +1887,6 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	{
 	    if (pc_race_table[race].skills[i] == NULL)
 	 	break;
-	    group_add(ch,pc_race_table[race].skills[i],FALSE);
 	}
 	/* add cost */
 	ch->pcdata->points = pc_race_table[race].points;
@@ -2019,11 +2018,6 @@ case CON_GET_ALIGNMENT:
             d->connected = CON_PICK_WEAPON;
             break;
         }
-
-        if (!parse_gen_groups(ch,argument))
-        send_to_char(
-        "Choices are: list,learned,premise,add,drop,info,help, and done.\n\r"
-        ,ch);
 
         do_function(ch, &do_help, (char*)"menu choice");
         break;

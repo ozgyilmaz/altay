@@ -636,7 +636,6 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	{
 	    if (pc_race_table[ch->race].skills[i] == NULL)
 		break;
-	    group_add(ch,pc_race_table[ch->race].skills[i],FALSE);
 	}
 	ch->affected_by = ch->affected_by|race_table[ch->race].aff;
 	ch->imm_flags	= ch->imm_flags | race_table[ch->race].imm;
@@ -919,23 +918,6 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	case 'G':
 	    KEY( "Gold",	ch->gold,		fread_number( fp ) );
-            if ( !str_cmp( word, "Group" )  || !str_cmp(word,"Gr"))
-            {
-                int gn;
-                char *temp;
- 
-                temp = fread_word( fp ) ;
-                gn = group_lookup(temp);
-                /* gn    = group_lookup( fread_word( fp ) ); */
-                if ( gn < 0 )
-                {
-                    fprintf(stderr,"%s",temp);
-                    bug( "Fread_char: unknown group. ", 0 );
-                }
-                else
-		    gn_add(ch,gn);
-                fMatch = TRUE;
-            }
 	    break;
 
 	case 'H':
