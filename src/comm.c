@@ -1940,7 +1940,6 @@ case CON_GET_ALIGNMENT:
 	"Please pick a weapon from the following choices:\n\r",0);
     buf[0] = '\0';
     for ( i = 0; weapon_table[i].name != NULL; i++)
-	if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
 	{
 	    strcat(buf,weapon_table[i].name);
 	    strcat(buf," ");
