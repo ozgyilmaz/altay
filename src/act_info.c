@@ -1928,10 +1928,8 @@ void do_who( CHAR_DATA *ch, char *argument )
     int iLevelUpper;
     int nNumber;
     int nMatch;
-    bool rgfClass[MAX_CLASS];
     bool rgfRace[MAX_PC_RACE];
     bool rgfClan[MAX_CLAN];
-    bool fClassRestrict = FALSE;
     bool fClanRestrict = FALSE;
     bool fClan = FALSE;
     bool fRaceRestrict = FALSE;
@@ -2561,7 +2559,7 @@ void do_practice( CHAR_DATA *ch, char *argument )
 	    ch->practice--;
 	    ch->pcdata->learned[sn] +=
 		int_app[get_curr_stat(ch,STAT_INT)].learn;
-	    if ( ch->pcdata->learned[sn] < adept )
+	    if ( ch->pcdata->learned[sn] < 70 )
 	    {
 		act( "You practice $T.",
 		    ch, NULL, skill_table[sn].name, TO_CHAR );

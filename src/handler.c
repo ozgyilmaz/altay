@@ -1019,9 +1019,12 @@ void affect_check(CHAR_DATA *ch,int where,int vector)
     for (obj = ch->carrying; obj != NULL; obj = obj->next_content)
     {
 	if (obj->wear_loc == -1)
+	{
 	    continue;
+	}
 
             for (paf = obj->affected; paf != NULL; paf = paf->next)
+			{
             if (paf->where == where && paf->bitvector == vector)
             {
                 switch (where)
@@ -1041,6 +1044,7 @@ void affect_check(CHAR_DATA *ch,int where,int vector)
                 }
                 return;
             }
+			}
 
         if (obj->enchanted)
 	    continue;
@@ -1612,7 +1616,9 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
     }
 
     for (i = 0; i < 4; i++)
+	{
     	ch->armor[i]	+= apply_ac( obj, obj->wear_loc,i );
+	}
     obj->wear_loc	 = -1;
 
     if (!obj->enchanted)

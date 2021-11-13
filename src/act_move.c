@@ -109,7 +109,6 @@ void move_char( CHAR_DATA *ch, int door, bool follow )
 
     if ( !IS_NPC(ch) )
     {
-	int iGuild;
 	int move;
 
 	if ( in_room->sector_type == SECT_AIR
