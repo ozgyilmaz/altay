@@ -298,6 +298,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	    }
 	}
 
+    }
+
     for ( paf = ch->affected; paf != NULL; paf = paf->next )
     {
 	if (paf->type < 0 || paf->type>= MAX_SKILL)
