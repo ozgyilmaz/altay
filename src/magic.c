@@ -317,7 +317,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
     if ((sn = find_spell(ch,arg1)) < 1
     ||  skill_table[sn].spell_fun == spell_null
-    ||   		 ch->pcdata->learned[sn] == 0)))
+    ||   		 ch->pcdata->learned[sn] == 0)
     {
 	send_to_char( "You don't know any spells of that name.\n\r", ch );
 	return;
