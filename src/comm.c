@@ -1951,14 +1951,13 @@ case CON_GET_ALIGNMENT:
     case CON_PICK_WEAPON:
 	write_to_buffer(d,"\n\r",2);
 	weapon = weapon_lookup(argument);
-	if (weapon == -1 || ch->pcdata->learned[*weapon_table[weapon].gsn] <= 0)
+	if (weapon == -1 )
 	{
 	    write_to_buffer(d,
 		"That's not a valid selection. Choices are:\n\r",0);
             buf[0] = '\0';
             for ( i = 0; weapon_table[i].name != NULL; i++)
-                if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
-                {
+			{
                     strcat(buf,weapon_table[i].name);
 		    strcat(buf," ");
                 }
