@@ -353,23 +353,6 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
     }
 }
 
-/* returns a group index number given the name */
-int group_lookup( const char *name )
-{
-    int gn;
-
-    for ( gn = 0; gn < MAX_GROUP; gn++ )
-    {
-        if ( group_table[gn].name == NULL )
-            break;
-        if ( LOWER(name[0]) == LOWER(group_table[gn].name[0])
-        &&   !str_prefix( name, group_table[gn].name ) )
-            return gn;
-    }
-
-    return -1;
-}
-
 /* recursively adds a group given its number -- uses group_add */
 void gn_add( CHAR_DATA *ch, int gn)
 {
