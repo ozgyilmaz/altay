@@ -298,15 +298,6 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	    }
 	}
 
-	for ( gn = 0; gn < MAX_GROUP; gn++ )
-        {
-            if ( group_table[gn].name != NULL && ch->pcdata->group_known[gn])
-            {
-                fprintf( fp, "Gr '%s'\n",group_table[gn].name);
-            }
-        }
-    }
-
     for ( paf = ch->affected; paf != NULL; paf = paf->next )
     {
 	if (paf->type < 0 || paf->type>= MAX_SKILL)
