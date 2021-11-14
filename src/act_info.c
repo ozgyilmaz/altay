@@ -2568,7 +2568,7 @@ void do_practice( CHAR_DATA *ch, char *argument )
 	    	}
 	    	else
 	    	{
-				ch->pcdata->learned[sn] = adept;
+				ch->pcdata->learned[sn] = 70;
 				act( "You are now learned at $T.",ch, NULL, skill_table[sn].name, TO_CHAR );
 				act( "$n is now learned at $T.",ch, NULL, skill_table[sn].name, TO_ROOM );
 	    	}
