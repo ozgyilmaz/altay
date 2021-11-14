@@ -364,7 +364,6 @@ struct item_type
 struct weapon_type
 {
     const char *	name;
-    sh_int	vnum;
     sh_int	type;
     sh_int	*gsn;
 };
