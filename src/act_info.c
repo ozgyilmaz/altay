@@ -2519,68 +2519,60 @@ void do_practice( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	CHAR_DATA *mob;
-	int adept;
+		CHAR_DATA *mob;
+		int adept;
 
-	if ( !IS_AWAKE(ch) )
-	{
-	    send_to_char( "In your dreams, or what?\n\r", ch );
-	    return;
-	}
+		if ( !IS_AWAKE(ch) )
+		{
+	    	send_to_char( "In your dreams, or what?\n\r", ch );
+	    	return;
+		}
 
-	for ( mob = ch->in_room->people; mob != NULL; mob = mob->next_in_room )
-	{
-	    if ( IS_NPC(mob) && IS_SET(mob->act, ACT_PRACTICE) )
-		break;
-	}
+		for ( mob = ch->in_room->people; mob != NULL; mob = mob->next_in_room )
+		{
+	    	if ( IS_NPC(mob) && IS_SET(mob->act, ACT_PRACTICE) )
+				break;
+		}
 
-	if ( mob == NULL )
-	{
-	    send_to_char( "You can't do that here.\n\r", ch );
-	    return;
-	}
+		if ( mob == NULL )
+		{
+	    	send_to_char( "You can't do that here.\n\r", ch );
+	    	return;
+		}
 
-	if ( ch->practice <= 0 )
-	{
-	    send_to_char( "You have no practice sessions left.\n\r", ch );
-	    return;
-	}
+		if ( ch->practice <= 0 )
+		{
+	    	send_to_char( "You have no practice sessions left.\n\r", ch );
+	    	return;
+		}
 
-	if ( ( sn = find_spell( ch,argument ) ) < 0
-	|| ( !IS_NPC(ch)
-	&&   (ch->pcdata->learned[sn] < 1 /* skill is not known */)))
-	{
-	    send_to_char( "You can't practice that.\n\r", ch );
-	    return;
-	}
+		if ( ( sn = find_spell( ch,argument ) ) < 0 || ( !IS_NPC(ch) &&   (ch->pcdata->learned[sn] < 1 /* skill is not known */)))
+		{
+	    	send_to_char( "You can't practice that.\n\r", ch );
+	    	return;
+		}
 
-	if ( ch->pcdata->learned[sn] >= 70 )
-	{
-	    sprintf( buf, "You are already learned at %s.\n\r",
-		skill_table[sn].name );
-	    send_to_char( buf, ch );
-	}
-	else
-	{
-	    ch->practice--;
-	    ch->pcdata->learned[sn] +=
-		int_app[get_curr_stat(ch,STAT_INT)].learn;
-	    if ( ch->pcdata->learned[sn] < 70 )
-	    {
-		act( "You practice $T.",
-		    ch, NULL, skill_table[sn].name, TO_CHAR );
-		act( "$n practices $T.",
-		    ch, NULL, skill_table[sn].name, TO_ROOM );
-	    }
-	    else
-	    {
-		ch->pcdata->learned[sn] = adept;
-		act( "You are now learned at $T.",
-		    ch, NULL, skill_table[sn].name, TO_CHAR );
-		act( "$n is now learned at $T.",
-		    ch, NULL, skill_table[sn].name, TO_ROOM );
-	    }
-	}
+		if ( ch->pcdata->learned[sn] >= 70 )
+		{
+	    	sprintf( buf, "You are already learned at %s.\n\r",skill_table[sn].name );
+	    	send_to_char( buf, ch );
+		}
+		else
+		{
+	    	ch->practice--;
+	    	ch->pcdata->learned[sn] += int_app[get_curr_stat(ch,STAT_INT)].learn;
+	    	if ( ch->pcdata->learned[sn] < 70 )
+	    	{
+				act( "You practice $T.",ch, NULL, skill_table[sn].name, TO_CHAR );
+				act( "$n practices $T.",ch, NULL, skill_table[sn].name, TO_ROOM );
+	    	}
+	    	else
+	    	{
+				ch->pcdata->learned[sn] = adept;
+				act( "You are now learned at $T.",ch, NULL, skill_table[sn].name, TO_CHAR );
+				act( "$n is now learned at $T.",ch, NULL, skill_table[sn].name, TO_ROOM );
+	    	}
+		}
     }
     return;
 }
