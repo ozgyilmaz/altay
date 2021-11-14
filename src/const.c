@@ -84,7 +84,7 @@ const	struct	weapon_type	weapon_table	[]	=
    { "flail",	WEAPON_FLAIL,	&gsn_flail	},
    { "whip",	WEAPON_WHIP,	&gsn_whip	},
    { "polearm",	WEAPON_POLEARM,	&gsn_polearm	},
-   { NULL,	0,				0,	NULL		}
+   { NULL,				0,	NULL		}
 };
 
 
