@@ -196,7 +196,7 @@ const 	struct	race_type	race_table	[]		=
     },
 
     {
-	"giant",		TRUE,
+	"giant",		FALSE,
 	0,		0,		0,
 	0,		RES_FIRE|RES_COLD,	VULN_MENTAL|VULN_LIGHTNING,
 	A|H|M|V,	A|B|C|D|E|F|G|H|I|J|K

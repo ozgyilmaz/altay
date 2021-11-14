@@ -1947,8 +1947,10 @@ case CON_GET_ALIGNMENT:
     strcat(buf,"\n\rYour choice? ");
     write_to_buffer(d,buf,0);
         d->connected = CON_PICK_WEAPON;
+		 break;
 
     case CON_PICK_WEAPON:
+	write_to_buffer(d,"\n\r",2);
 	weapon = weapon_lookup(argument);
 	if (weapon == -1 )
 	{
