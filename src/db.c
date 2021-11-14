@@ -1327,10 +1327,7 @@ void area_update( void )
 	    wiznet(buf,NULL,NULL,WIZ_RESETS,0,0);
 
 	    pArea->age = number_range( 0, 3 );
-	    pRoomIndex = get_room_index( ROOM_VNUM_SCHOOL );
-	    if ( pRoomIndex != NULL && pArea == pRoomIndex->area )
-		pArea->age = 15 - 2;
-	    else if (pArea->nplayer == 0)
+	    if (pArea->nplayer == 0)
 		pArea->empty = TRUE;
 	}
     }
