@@ -1936,39 +1936,6 @@ case CON_GET_ALIGNMENT:
 
 	write_to_buffer(d,"\n\r",0);
 
-    write_to_buffer(d,
-	"Please pick a weapon from the following choices:\n\r",0);
-    buf[0] = '\0';
-    for ( i = 0; weapon_table[i].name != NULL; i++)
-	{
-	    strcat(buf,weapon_table[i].name);
-	    strcat(buf," ");
-	}
-    strcat(buf,"\n\rYour choice? ");
-    write_to_buffer(d,buf,0);
-        d->connected = CON_PICK_WEAPON;
-		 break;
-
-    case CON_PICK_WEAPON:
-	write_to_buffer(d,"\n\r",2);
-	weapon = weapon_lookup(argument);
-	if (weapon == -1 )
-	{
-	    write_to_buffer(d,
-		"That's not a valid selection. Choices are:\n\r",0);
-            buf[0] = '\0';
-            for ( i = 0; weapon_table[i].name != NULL; i++)
-			{
-                    strcat(buf,weapon_table[i].name);
-		    strcat(buf," ");
-                }
-            strcat(buf,"\n\rYour choice? ");
-            write_to_buffer(d,buf,0);
-	    return;
-	}
-
-	ch->pcdata->learned[*weapon_table[weapon].gsn] = 40;
-	write_to_buffer(d,"\n\r",2);
 	do_function(ch, &do_help, (char*)"motd");
 	d->connected = CON_READ_MOTD;
 	break;
@@ -1989,7 +1956,7 @@ case CON_GET_ALIGNMENT:
         }
 
 	write_to_buffer( d,
-    "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r",
+    "\n\rWelcome to Altay Mud.  Please do not feed the mobiles.\n\r",
 	    0 );
 	ch->next	= char_list;
 	char_list	= ch;
@@ -2010,9 +1977,8 @@ case CON_GET_ALIGNMENT:
 	    set_title( ch, buf );
 
 	    do_function (ch, &do_outfit,(char*)"");
-	    obj_to_char(create_object(get_obj_index(OBJ_VNUM_MAP),0),ch);
 
-	    char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
+	    char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
 	    send_to_char("\n\r",ch);
 	    do_function(ch, &do_help, (char*)"newbie info");
 	    send_to_char("\n\r",ch);

@@ -244,7 +244,7 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 
     if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) ) == NULL )
     {
-        obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0 );
+        obj = create_object( get_obj_index(OUTFIT_TORCH), 0 );
 	obj->cost = 0;
         obj_to_char( obj, ch );
         equip_char( ch, obj, WEAR_LIGHT );
@@ -252,42 +252,20 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 
     if ( ( obj = get_eq_char( ch, WEAR_BODY ) ) == NULL )
     {
-	obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_VEST), 0 );
+	obj = create_object( get_obj_index(OUTFIT_JERKIN), 0 );
 	obj->cost = 0;
         obj_to_char( obj, ch );
         equip_char( ch, obj, WEAR_BODY );
     }
-
-    /* do the weapon thing */
-    if ((obj = get_eq_char(ch,WEAR_WIELD)) == NULL)
+	
+    if ( ( obj = get_eq_char( ch, WEAR_LEGS ) ) == NULL )
     {
-    	sn = 0;
-    	vnum = OBJ_VNUM_SCHOOL_SWORD; /* just in case! */
-
-    	for (i = 0; weapon_table[i].name != NULL; i++)
-    	{
-	    if (ch->pcdata->learned[sn] <
-		ch->pcdata->learned[*weapon_table[i].gsn])
-	    {
-	    	sn = *weapon_table[i].gsn;
-	    	vnum = weapon_table[i].vnum;
-	    }
-    	}
-
-    	obj = create_object(get_obj_index(vnum),0);
-     	obj_to_char(obj,ch);
-    	equip_char(ch,obj,WEAR_WIELD);
-    }
-
-    if (((obj = get_eq_char(ch,WEAR_WIELD)) == NULL
-    ||   !IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS))
-    &&  (obj = get_eq_char( ch, WEAR_SHIELD ) ) == NULL )
-    {
-        obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), 0 );
+	obj = create_object( get_obj_index(OUTFIT_PANTS), 0 );
 	obj->cost = 0;
         obj_to_char( obj, ch );
-        equip_char( ch, obj, WEAR_SHIELD );
+        equip_char( ch, obj, WEAR_LEGS );
     }
+
 
     send_to_char("You have been equipped by Mota.\n\r",ch);
 }
