@@ -1813,8 +1813,7 @@ void do_help( CHAR_DATA *ch, char *argument )
 		add_buf(output,pHelp->text);
 	    found = TRUE;
 	    /* small hack :) */
-	    if (ch->desc != NULL && ch->desc->connected != CON_PLAYING
-	    &&  		    ch->desc->connected != CON_GEN_GROUPS)
+	    if (ch->desc != NULL && ch->desc->connected != CON_PLAYING)
 		break;
 	}
     }
@@ -1898,7 +1897,6 @@ void do_who( CHAR_DATA *ch, char *argument )
     char buf2[MAX_STRING_LENGTH];
     BUFFER *output;
     DESCRIPTOR_DATA *d;
-    int iClass;
     int iRace;
     int iClan;
     int iLevelLower;
@@ -2494,7 +2492,6 @@ void do_practice( CHAR_DATA *ch, char *argument )
     else
     {
 		CHAR_DATA *mob;
-		int adept;
 
 		if ( !IS_AWAKE(ch) )
 		{
