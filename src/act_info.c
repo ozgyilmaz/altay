@@ -2481,33 +2481,41 @@ void do_practice( CHAR_DATA *ch, char *argument )
     int sn;
 
     if ( IS_NPC(ch) )
-	return;
+	{
+		return;
+	}
 
     if ( argument[0] == '\0' )
     {
-	int col;
+		int col;
 
-	col    = 0;
-	for ( sn = 0; sn < MAX_SKILL; sn++ )
-	{
-	    if ( skill_table[sn].name == NULL )
-		break;
-	    if ( ch->pcdata->learned[sn] < 1 /* skill is not known */)
-		continue;
+		col    = 0;
+		for ( sn = 0; sn < MAX_SKILL; sn++ )
+		{
+			bugf(skill_table[sn].name);
+	    	if ( skill_table[sn].name == NULL )
+			{
+				break;
+			}
+	    	if ( ch->pcdata->learned[sn] < 1 /* skill is not known */)
+			{
+				continue;
+			}
 
-	    sprintf( buf, "%-18s %3d%%  ",
-		skill_table[sn].name, ch->pcdata->learned[sn] );
-	    send_to_char( buf, ch );
-	    if ( ++col % 3 == 0 )
-		send_to_char( "\n\r", ch );
-	}
+	    	printf_to_char(ch,"%-18s %3d%%  ",skill_table[sn].name, ch->pcdata->learned[sn]);
+			
+	    	if ( ++col % 3 == 0 )
+			{
+				printf_to_char( ch, "\n\r" );
+			}
+		}
 
-	if ( col % 3 != 0 )
-	    send_to_char( "\n\r", ch );
+		if ( col % 3 != 0 )
+		{
+	    	printf_to_char( ch, "\n\r" );
+		}
 
-	sprintf( buf, "You have %d practice sessions left.\n\r",
-	    ch->practice );
-	send_to_char( buf, ch );
+		printf_to_char( ch , "You have %d practice sessions left.\n\r", ch->practice);
     }
     else
     {
