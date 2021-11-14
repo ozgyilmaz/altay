@@ -417,12 +417,6 @@ const	struct	pc_race_type	pc_race_table	[]	=
 	{ "berserk" },
 	{ 14, 12, 14, 10, 15 },	{ 20, 16, 19, 14, 21 }, SIZE_MEDIUM
     },
-
-    {
-	"giant",	"Giant",	6,
-	{ "bash", "fast healing" },
-	{ 16, 11, 13, 11, 14 },	{ 22, 15, 18, 15, 20 }, SIZE_LARGE
-    }
 };
 
 

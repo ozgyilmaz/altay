@@ -129,12 +129,13 @@ typedef void SPELL_FUN	args( ( int sn, int level, CHAR_DATA *ch, void *vo,
 #define MAX_IN_GROUP		   15
 #define MAX_ALIAS		    5
 #define MAX_CLASS		    4
-#define MAX_PC_RACE		    5
+#define MAX_PC_RACE		    4
 #define MAX_CLAN		    3
 #define MAX_DAMAGE_MESSAGE	   41
 #define MAX_LEVEL		   60
 #define LEVEL_HERO		   (MAX_LEVEL - 9)
 #define LEVEL_IMMORTAL		   (MAX_LEVEL - 8)
+#define MAX_LEARN_WITH_PRACTICE    70
 
 #define PULSE_PER_SECOND	    4
 #define PULSE_VIOLENCE		  ( 3 * PULSE_PER_SECOND)
@@ -230,7 +231,6 @@ struct	weather_data
 #define CON_GET_NEW_RACE		 6
 #define CON_GET_NEW_SEX			 7
 #define CON_GET_ALIGNMENT		 9
-#define CON_GEN_GROUPS			11
 #define CON_PICK_WEAPON			12
 #define CON_READ_IMOTD			13
 #define CON_READ_MOTD			14
@@ -1196,7 +1196,6 @@ struct	kill_data
 
 /* RT auto flags */
 #define PLR_AUTOASSIST		(C)
-#define PLR_AUTOEXIT		(D)
 #define PLR_AUTOLOOT		(E)
 #define PLR_AUTOSAC             (F)
 #define PLR_AUTOGOLD		(G)

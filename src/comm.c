@@ -1949,7 +1949,6 @@ case CON_GET_ALIGNMENT:
         d->connected = CON_PICK_WEAPON;
 
     case CON_PICK_WEAPON:
-	write_to_buffer(d,"\n\r",2);
 	weapon = weapon_lookup(argument);
 	if (weapon == -1 )
 	{
@@ -1971,53 +1970,6 @@ case CON_GET_ALIGNMENT:
 	do_function(ch, &do_help, (char*)"motd");
 	d->connected = CON_READ_MOTD;
 	break;
-
-    case CON_GEN_GROUPS:
-	send_to_char("\n\r",ch);
-
-       	if (!str_cmp(argument,"done"))
-       	{
-	    if (ch->pcdata->points == pc_race_table[ch->race].points)
-	    {
-	        send_to_char("You didn't pick anything.\n\r",ch);
-		break;
-	    }
-
-	    if (ch->pcdata->points <= 40 + pc_race_table[ch->race].points)
-	    {
-		sprintf(buf,
-		    "You must take at least %d points of skills and groups",
-		    40 + pc_race_table[ch->race].points);
-		send_to_char(buf, ch);
-		break;
-	    }
-
-	    sprintf(buf,"Creation points: %d\n\r",ch->pcdata->points);
-	    send_to_char(buf,ch);
-	    sprintf(buf,"Experience per level: %d\n\r",
-	            exp_per_level(ch,ch->gen_data->points_chosen));
-	    if (ch->pcdata->points < 40)
-		ch->train = (40 - ch->pcdata->points + 1) / 2;
-	    free_gen_data(ch->gen_data);
-	    ch->gen_data = NULL;
-	    send_to_char(buf,ch);
-            write_to_buffer( d, "\n\r", 2 );
-            write_to_buffer(d,
-                "Please pick a weapon from the following choices:\n\r",0);
-            buf[0] = '\0';
-            for ( i = 0; weapon_table[i].name != NULL; i++)
-			{
-                    strcat(buf,weapon_table[i].name);
-		    strcat(buf," ");
-                }
-            strcat(buf,"\n\rYour choice? ");
-            write_to_buffer(d,buf,0);
-            d->connected = CON_PICK_WEAPON;
-            break;
-        }
-
-        do_function(ch, &do_help, (char*)"menu choice");
-        break;
 
     case CON_READ_IMOTD:
 	write_to_buffer(d,"\n\r",2);
