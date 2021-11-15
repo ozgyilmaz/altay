@@ -352,6 +352,7 @@ if (db_run == 0 || db_run == 1)
         logf("db tables will be filled with freshly read data.");
         sprintf( query , "TRUNCATE TABLE `area`;TRUNCATE TABLE `help`;TRUNCATE TABLE `mobile`;TRUNCATE TABLE `object`;TRUNCATE TABLE `help`;TRUNCATE TABLE `object_affect_data`;TRUNCATE TABLE `object_extra_description`;TRUNCATE TABLE `reset`;TRUNCATE TABLE `room`;TRUNCATE TABLE `room_exit`;TRUNCATE TABLE `room_extra_description`;TRUNCATE TABLE `shop`;TRUNCATE TABLE `social`;" );
         mysql_execute_query(query,0);
+        exit(0);
     }
 
 	if ( ( fpList = fopen( AREA_LIST, "r" ) ) == NULL )
