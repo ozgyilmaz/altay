@@ -344,6 +344,7 @@ if (db_run == 1 || db_run == 2) {
 if (db_run == 0 || db_run == 1)
 {
 	FILE *fpList;
+    char query[ MAX_STRING_LENGTH ];
 
     if(db_run == 1)
     {
