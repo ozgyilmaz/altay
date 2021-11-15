@@ -350,31 +350,7 @@ if (db_run == 0 || db_run == 1)
     {
         logf("'db_run' is not set. Application will run with *.are files.");
         logf("db tables will be filled with freshly read data.");
-        sprintf( query , "TRUNCATE TABLE `area`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `help`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `mobile`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `object`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `object_affect_data`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `object_extra_description`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `reset`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `room`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `room_exit`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `room_extra_description`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `shop`");
-        mysql_execute_query(query,0);
-        sprintf( query , "TRUNCATE TABLE `social`");
-        mysql_execute_query(query,0);
-        exit(0);
+        mysql_truncate_tables();
     }
 
 	if ( ( fpList = fopen( AREA_LIST, "r" ) ) == NULL )
@@ -3583,6 +3559,38 @@ void mysql_execute_query(char *query, int i)
  }
 
  mysql_close( hnd );
+}
+
+void mysql_truncate_tables()
+{
+    char query[ MAX_STRING_LENGTH ];
+    sprintf( query , "TRUNCATE TABLE `area`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `help`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `mobile`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `object`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `object_affect_data`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `object_extra_description`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `reset`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `room`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `room_exit`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `room_extra_description`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `shop`");
+    mysql_execute_query(query,0);
+    sprintf( query , "TRUNCATE TABLE `social`");
+    mysql_execute_query(query,0);
+
+    free(query);
+    return;
 }
 
 /***************************************************************************

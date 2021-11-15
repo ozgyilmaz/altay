@@ -2164,6 +2164,7 @@ void mysql_load_reset args((MYSQL_ROW row));
 void mysql_read_shop args(( void ));
 void mysql_load_shop args((MYSQL_ROW row));
 void mysql_execute_query args((char *query, int i));
+void mysql_truncate_tables args((void));
 AREA_DATA* area_lookup args(( char *name ));
 
 /* effect.c */
