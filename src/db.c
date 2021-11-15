@@ -142,6 +142,8 @@ sh_int  		gsn_staves;
 sh_int  		gsn_wands;
 sh_int  		gsn_recall;
 
+sh_int  		gsn_sweep;
+
 ini_t * config;
 
 /*

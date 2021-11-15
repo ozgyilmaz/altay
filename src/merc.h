@@ -1748,6 +1748,7 @@ extern sh_int  gsn_staves;
 extern sh_int  gsn_wands;
 extern sh_int  gsn_recall;
 
+extern sh_int  gsn_sweep;
 
 
 /*

@@ -1921,5 +1921,12 @@ const	struct	skill_type	skill_table	[MAX_SKILL]	=
 	spell_null,		TAR_IGNORE,		POS_STANDING,
 	&gsn_recall,		SLOT( 0),	0,	12,
 	"",			"!Recall!",		""
+    },
+
+    {
+            "sweep",		1,
+            spell_null,		TAR_IGNORE,		POS_STANDING,
+            &gsn_sweep,		SLOT( 0),	0,	20,
+            "",			"!Sweep!",		""
     }
 };
