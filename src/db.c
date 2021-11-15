@@ -3589,7 +3589,6 @@ void mysql_truncate_tables()
     sprintf( query , "TRUNCATE TABLE `social`");
     mysql_execute_query(query,0);
 
-    free(query);
     return;
 }
 
